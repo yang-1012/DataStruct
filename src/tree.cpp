@@ -43,6 +43,16 @@ BstNode* Insert(BstNode* root,int data)
     }
     return root;
 }
+
+int GetMin(BstNode* root)
+{
+    if(root == nullptr)
+        return -1;
+    if(root->left == nullptr)
+        return root->val;
+    else
+        return GetMin(root->left);
+}
 int main()
 {
     BstNode* root = nullptr;
@@ -50,6 +60,9 @@ int main()
     root = Insert(root,10);
     root = Insert(root,20);
     bool flag;
-    flag = SearchVal(root,11);
-    if (flag) cout << "Value is found";
+    flag = SearchVal(root,10);
+    if (flag)
+        cout << "Value is found";
+    else
+        cout << "Value is not found";
 }
