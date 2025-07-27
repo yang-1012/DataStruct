@@ -43,7 +43,7 @@ BstNode* Insert(BstNode* root,int data)
     }
     return root;
 }
-
+//递归实现寻找最小值
 int GetMin(BstNode* root)
 {
     if(root == nullptr)
@@ -52,6 +52,25 @@ int GetMin(BstNode* root)
         return root->val;
     else
         return GetMin(root->left);
+}
+
+/*
+ * 查找节点的高度
+ * 节点的高度定义为从该节点到叶子节点的最长路径
+ * 节点的深度定义为从该节点到根节点的最长路径
+ * 树的高度= 根节点的高度= 从根结点出发到叶子节点最长的路径
+ * 这里定义如果只有一个根节点，树的高度为0（也可以是1，定义不同）
+ * 树为空，高度为-1
+ * */
+int GetHeight(BstNode* root){
+    if(root == nullptr)
+        return -1;
+    else
+    {
+        int left_height = GetHeight(root->left);
+        int right_height = GetHeight(root->right);
+        return max(left_height,right_height) + 1;
+    }
 }
 int main()
 {
